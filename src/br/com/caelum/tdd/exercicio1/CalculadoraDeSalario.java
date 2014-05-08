@@ -3,6 +3,7 @@ package br.com.caelum.tdd.exercicio1;
 import static br.com.caelum.tdd.exercicio1.Cargo.DBA;
 import static br.com.caelum.tdd.exercicio1.Cargo.DESENVOLVEDOR;
 import static br.com.caelum.tdd.exercicio1.Cargo.TESTER;
+import static br.com.caelum.tdd.exercicio1.Cargo.GERENTE_PROJETOS;
 
 public class CalculadoraDeSalario {
 
@@ -12,9 +13,12 @@ public class CalculadoraDeSalario {
 			return dezOuVintePorcento(funcionario);
 		}
 		
-		if(DBA.equals(funcionario.getCargo()) || TESTER.equals(funcionario.getCargo())) {
+		if(DBA.equals(funcionario.getCargo()) 
+				|| TESTER.equals(funcionario.getCargo())
+				|| GERENTE_PROJETOS.equals(funcionario.getCargo())) {
 			return quinzeOuVinteCincoPorcento(funcionario);
 		}
+		
 		
 		throw new RuntimeException("funcionario invalido");
 	}

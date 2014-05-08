@@ -77,6 +77,24 @@ public class CalculadoraDeSalarioTest {
 		assertEquals(1000.0 * 0.85, salario, 0.000001);
 	}
 	
+	@Test
+	public void deveRetornar4000MenosImpostoDe20PorCentoSeGerenteProjetosGanhando5000(){
+		Funcionario gerenteProjetos = umFuncionario(Cargo.GERENTE_PROJETOS, comSalarioBase(5000.0));
+		
+		double salario = calculadora.calcula(gerenteProjetos);
+		
+		assertEquals(4000.0, salario, 0.000001);
+	}
+	
+	@Test
+	public void deveRetornar3600MenosImpostoDe15PorCentoSeGerenteProjetosGanhando4000(){
+		Funcionario gerenteProjetos = umFuncionario(Cargo.GERENTE_PROJETOS, comSalarioBase(4000.0));
+		
+		double salario = calculadora.calcula(gerenteProjetos);
+		
+		assertEquals(3600.0, salario, 0.000001);
+	}
+	
 		
 	private Funcionario umFuncionario(Cargo cargo, double salario) {
 		Funcionario funcionario = new Funcionario();
