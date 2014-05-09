@@ -1,7 +1,6 @@
 package br.com.caelum.tdd.exercicio2;
 
 
-public interface EnviadorDeEmail {
+public interface EnviadorDeEmail extends AcaoAposGeracaoDaNota {
 
-	void enviaEmail(NotaFiscal nf);
 }

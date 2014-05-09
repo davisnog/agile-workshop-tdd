@@ -1,8 +1,9 @@
 package br.com.caelum.tdd.exercicio2;
 
 public class NotaFiscalDaoSqlServer implements NotaFiscalDao {
-
-	public void persiste(NotaFiscal nf) {
+	
+	@Override
+	public void executa(NotaFiscal notaFiscal) {
 		System.out.println("salva nf no banco");
 	}
 

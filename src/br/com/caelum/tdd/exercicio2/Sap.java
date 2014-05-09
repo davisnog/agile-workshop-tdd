@@ -1,5 +1,4 @@
 package br.com.caelum.tdd.exercicio2;
 
-public interface Sap {
-	public void envia(NotaFiscal nf);
+public interface Sap extends AcaoAposGeracaoDaNota {
 }

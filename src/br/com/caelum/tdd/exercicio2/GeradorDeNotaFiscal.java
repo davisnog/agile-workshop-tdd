@@ -1,13 +1,14 @@
 package br.com.caelum.tdd.exercicio2;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class GeradorDeNotaFiscal {
 
-	private final EnviadorDeEmail email;
-	private final NotaFiscalDao dao;
+	private final List<AcaoAposGeracaoDaNota> acoes;
 
-	public GeradorDeNotaFiscal(EnviadorDeEmail email, NotaFiscalDao dao) {
-		this.email = email;
-		this.dao = dao;
+	public GeradorDeNotaFiscal(AcaoAposGeracaoDaNota... acoes) {
+		this.acoes = Arrays.asList(acoes);
 	}
 	
 	public NotaFiscal gera(Fatura fatura) {
@@ -16,13 +17,18 @@ public class GeradorDeNotaFiscal {
 		
 		NotaFiscal nf = new NotaFiscal(valor, impostoSimplesSobreO(valor));
 		
-		email.enviaEmail(nf);
-		dao.persiste(nf);
-
+		executaAcoes(nf);
+		
 		return nf;
 	}
 
 	private double impostoSimplesSobreO(double valor) {
 		return valor * 0.06;
+	}
+	
+	private void executaAcoes(NotaFiscal nf){
+		for(AcaoAposGeracaoDaNota acao : acoes){
+			acao.executa(nf);
+		}
 	}
 }
